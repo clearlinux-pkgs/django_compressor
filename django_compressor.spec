@@ -4,7 +4,7 @@
 #
 Name     : django_compressor
 Version  : 1.5
-Release  : 9
+Release  : 10
 URL      : https://pypi.python.org/packages/source/d/django_compressor/django_compressor-1.5.tar.gz
 Source0  : https://pypi.python.org/packages/source/d/django_compressor/django_compressor-1.5.tar.gz
 Summary  : Compresses linked and inline JavaScript or CSS into single cached files.
