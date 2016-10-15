@@ -1,5 +1,5 @@
 PKG_NAME := django_compressor
-URL := https://pypi.python.org/packages/source/d/django_compressor/django_compressor-2.0.tar.gz
+URL := http://pypi.debian.net/django_compressor/django_compressor-2.1.tar.gz
 ARCHIVES :=
 
 include ../common/Makefile.common
