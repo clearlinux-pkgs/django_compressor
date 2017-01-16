@@ -4,14 +4,14 @@
 #
 Name     : django_compressor
 Version  : 2.1
-Release  : 20
+Release  : 21
 URL      : http://pypi.debian.net/django_compressor/django_compressor-2.1.tar.gz
 Source0  : http://pypi.debian.net/django_compressor/django_compressor-2.1.tar.gz
 Summary  : Compresses linked and inline JavaScript or CSS into single cached files.
 Group    : Development/Tools
 License  : MIT NCSA
 Requires: django_compressor-python
-BuildRequires : django-appconf 
+BuildRequires : django-appconf
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pluggy
@@ -19,8 +19,8 @@ BuildRequires : py-python
 BuildRequires : pytest
 BuildRequires : python-dev
 BuildRequires : python3-dev
-BuildRequires : rcssmin 
-BuildRequires : rjsmin 
+BuildRequires : rcssmin
+BuildRequires : rjsmin
 BuildRequires : setuptools
 BuildRequires : tox
 BuildRequires : virtualenv
@@ -44,13 +44,15 @@ python components for the django_compressor package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1484542929
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
+export SOURCE_DATE_EPOCH=1484542929
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
