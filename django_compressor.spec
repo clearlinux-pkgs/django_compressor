@@ -4,23 +4,25 @@
 #
 Name     : django_compressor
 Version  : 2.1.1
-Release  : 24
+Release  : 25
 URL      : http://pypi.debian.net/django_compressor/django_compressor-2.1.1.tar.gz
 Source0  : http://pypi.debian.net/django_compressor/django_compressor-2.1.1.tar.gz
 Summary  : Compresses linked and inline JavaScript or CSS into single cached files.
 Group    : Development/Tools
 License  : MIT NCSA
+Requires: django_compressor-python3
+Requires: django_compressor-license
 Requires: django_compressor-python
 Requires: django-appconf
 Requires: rcssmin
 Requires: rjsmin
+BuildRequires : buildreq-distutils3
 BuildRequires : django-appconf
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : rcssmin
 BuildRequires : rjsmin
@@ -31,12 +33,30 @@ BuildRequires : virtualenv
 %description
 =================
 
+%package license
+Summary: license components for the django_compressor package.
+Group: Default
+
+%description license
+license components for the django_compressor package.
+
+
 %package python
 Summary: python components for the django_compressor package.
 Group: Default
+Requires: django_compressor-python3
 
 %description python
 python components for the django_compressor package.
+
+
+%package python3
+Summary: python3 components for the django_compressor package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the django_compressor package.
 
 
 %prep
@@ -47,15 +67,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1503087359
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1532217741
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1503087359
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+mkdir -p %{buildroot}/usr/share/doc/django_compressor
+cp LICENSE %{buildroot}/usr/share/doc/django_compressor/LICENSE
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -63,7 +82,13 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/django_compressor/LICENSE
+
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python2*/*
+
+%files python3
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
