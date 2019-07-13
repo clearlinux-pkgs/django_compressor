@@ -4,7 +4,7 @@
 #
 Name     : django_compressor
 Version  : 2.3
-Release  : 29
+Release  : 30
 URL      : https://files.pythonhosted.org/packages/73/ba/e14cc0a8ebecb043175abee1dcab15b2612952f91793ddfdfeefd0892a2f/django_compressor-2.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/73/ba/e14cc0a8ebecb043175abee1dcab15b2612952f91793ddfdfeefd0892a2f/django_compressor-2.3.tar.gz
 Summary  : Compresses linked and inline JavaScript or CSS into single cached files.
