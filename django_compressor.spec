@@ -4,7 +4,7 @@
 #
 Name     : django_compressor
 Version  : 2.4.1
-Release  : 50
+Release  : 51
 URL      : https://files.pythonhosted.org/packages/34/77/4352563ad70317ac021ba913c2f8cdb5b10cb35c70885d27f2c83cddff22/django_compressor-2.4.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/34/77/4352563ad70317ac021ba913c2f8cdb5b10cb35c70885d27f2c83cddff22/django_compressor-2.4.1.tar.gz
 Summary  : Compresses linked and inline JavaScript or CSS into single cached files.
@@ -71,7 +71,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635723993
+export SOURCE_DATE_EPOCH=1636995536
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -81,6 +81,7 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
+pypi-dep-fix.py . rjsmin
 python3 setup.py build
 
 %install
@@ -89,6 +90,7 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/django_compressor
 cp %{_builddir}/django_compressor-2.4.1/LICENSE %{buildroot}/usr/share/package-licenses/django_compressor/56d7505d0f3261ee8a924a2e8841242e027126fb
 python3 -tt setup.py build  install --root=%{buildroot}
+pypi-dep-fix.py %{buildroot} rjsmin
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
