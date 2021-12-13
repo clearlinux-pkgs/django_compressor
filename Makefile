@@ -1,5 +1,5 @@
 PKG_NAME := django_compressor
-URL = https://files.pythonhosted.org/packages/34/77/4352563ad70317ac021ba913c2f8cdb5b10cb35c70885d27f2c83cddff22/django_compressor-2.4.1.tar.gz
+URL = https://files.pythonhosted.org/packages/74/21/8b1232c836f212d69968eb194d889fba5d6e987f3a174cb58e072caf4afd/django_compressor-3.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
